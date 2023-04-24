@@ -235,7 +235,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "com.company.entity.User[ id=" + id + " ]";
+        return "com.company.entity.User[ id=" + id + ",name "+name+"]";
     }
 
 }

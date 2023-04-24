@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.company.dao.inter;
+package com.company.dao.impl;
 
 import com.company.entity.User;
-import com.company.entity.UserSkill;
+
 import java.util.List;
 
 /**
  *
- * @author sarkhanrasullu
+ *
  */
-public interface UserDaoInter {
+public interface UserRepositoryCustom {
 
   public List<User> getAll(String name, String surname, Integer nationalityId);
 
