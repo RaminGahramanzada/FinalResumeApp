@@ -4,17 +4,7 @@
  */
 package com.company.main;
 
-import com.company.entity.User;
-import com.company.dao.impl.UserDaoImpl;
-import com.company.dao.inter.EmploymentHistoryDaoInter;
 import com.company.dao.inter.UserDaoInter;
-import com.company.dao.inter.UserSkillDaoInter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.List;
 
 
 /**
