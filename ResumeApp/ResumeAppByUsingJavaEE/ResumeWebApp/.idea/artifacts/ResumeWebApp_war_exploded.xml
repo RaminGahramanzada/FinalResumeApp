@@ -17,9 +17,7 @@
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:8.0.30" />
           <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:3.19.4" />
           <element id="library" level="project" name="Maven: javax:javaee-web-api:7.0" />
-          <element id="archive" name="ResumeDbApp-0.1.jar">
-            <element id="module-output" name="ResumeDbApp" />
-          </element>
+          <element id="library" level="project" name="Maven: com.company:ResumeDbApp:0.1" />
         </element>
       </element>
       <element id="directory" name="META-INF">
