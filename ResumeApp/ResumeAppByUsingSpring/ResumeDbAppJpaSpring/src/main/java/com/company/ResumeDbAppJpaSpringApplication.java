@@ -61,7 +61,7 @@ public class ResumeDbAppJpaSpringApplication {
 
 			@Override
 			public void run(String... args) throws Exception {
-
+				System.out.println(repo.getById(11));
 				for(int i=0;i<10;i++){
 					repo.getAll(null,null,null);
 				}
