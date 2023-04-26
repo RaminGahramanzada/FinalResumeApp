@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ResumeDbApp/ResumeDbApp.iml" filepath="$PROJECT_DIR$/ResumeDbApp/ResumeDbApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/ResumeWebApp/ResumeWebApp.iml" filepath="$PROJECT_DIR$/ResumeWebApp/ResumeWebApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ResumeWebApp/resumewebapp.iml" filepath="$PROJECT_DIR$/ResumeWebApp/resumewebapp.iml" />
     </modules>
   </component>
 </project>

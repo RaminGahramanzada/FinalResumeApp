@@ -16,7 +16,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
 
    UserDaoInter dao = Context.instanceUserDao();
-   dao.removeUser(18);
+   dao.removeUser(21);
  
 }
     
