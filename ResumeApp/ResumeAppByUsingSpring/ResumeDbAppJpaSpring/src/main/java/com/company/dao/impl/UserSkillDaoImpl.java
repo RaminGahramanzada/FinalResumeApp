@@ -1,11 +1,9 @@
 package com.company.dao.impl;
 
-import com.company.entity.Skill;
-import com.company.entity.User;
-import com.company.entity.UserSkill;
-import com.company.dao.inter.AbstractDao;
-import static com.company.dao.inter.AbstractDao.connect;
+import com.company.dao.inter.AbstractDAO;
 import com.company.dao.inter.UserSkillDaoInter;
+import com.company.entity.UserSkill;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,28 +13,21 @@ import java.util.List;
 
 /**
  *
- * @author Lenovo
+ * @author Ramin Data Access Object
  */
-public class UserSkillDaoImpl extends AbstractDao implements UserSkillDaoInter {
-    
-    
-    
-  public UserSkill getUserSkill(ResultSet rs) throws SQLException {
+public class UserSkillDaoImpl extends AbstractDAO implements UserSkillDaoInter {
+
+    public UserSkill getUserSkill(ResultSet rs) throws SQLException {
         int userSkillId = rs.getInt("userSkillId");
         int userId = rs.getInt("id");
         int skill_id = rs.getInt("skill_id");
         String skill_name = rs.getString("skill_name");
         int power = rs.getInt("power");
-      //  UserSkill us = new UserSkill(userSkillId, new User(userId), new Skill(skill_id, skill_name), power);
-       //System.out.println(us);
-       // return us;
-       return null;
-
+//        UserSkill us = new UserSkill(userSkillId, new User(userId), new Skill(skill_id, skill_name), power);
+//        System.out.println(us);
+//        return us;
+        return null;
     }
-
-    public UserSkillDaoImpl() {
-    }
-  
 
     @Override
     public List<UserSkill> getAllSkillByUserId(int id) {
@@ -77,12 +68,11 @@ public class UserSkillDaoImpl extends AbstractDao implements UserSkillDaoInter {
         boolean b = true;
         try {
             conn = connect();
-            PreparedStatement stmt = conn.prepareStatement( "INSERT INTO `resume`.`user_skill` (`id`, `user_id`, `skill_id`, `power`) VALUES ('?', '?', '?', '?');");
-            stmt.setInt(1, u.getId());
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO user_skill (skill_id , user_id ,power) VALUES (? , ? ,  ? ) ;");
+
+            stmt.setInt(1, u.getSkill().getId());
             stmt.setInt(2, u.getUser().getId());
-            stmt.setInt(3, u.getSkill().getId());
-            
-            stmt.setInt(4, u.getPower());
+            stmt.setInt(3, u.getPower());
 
             b = stmt.execute();
 
@@ -98,12 +88,11 @@ public class UserSkillDaoImpl extends AbstractDao implements UserSkillDaoInter {
         boolean b = true;
         try {
             conn = connect();
-            PreparedStatement stmt = conn.prepareStatement("UPDATE `resume`.`user_skill` SET skill_id= '?', SET `power` = '?' WHERE (`id` = '');");
+            PreparedStatement stmt = conn.prepareStatement("UPDATE user_skill SET skill_id = ? , user_id =? ,power =?  WHERE id = ? ;");
 
             stmt.setInt(1, u.getSkill().getId());
             stmt.setInt(2, u.getUser().getId());
             stmt.setInt(3, u.getPower());
-            
 
             stmt.setInt(4, u.getId());
 
@@ -132,4 +121,5 @@ public class UserSkillDaoImpl extends AbstractDao implements UserSkillDaoInter {
             return false;
         }
     }
+
 }

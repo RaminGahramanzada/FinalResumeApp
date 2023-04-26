@@ -1,29 +1,30 @@
 package com.company.dao.impl;
 
-//import at.favre.lib.crypto.bcrypt.BCrypt;
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import com.company.entity.User;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-import javax.persistence.*;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import javax.transaction.Transactional;
+import java.util.List;
 
 /**
  *
- * @author Lenovo
- *
+ * @author Ramin Data Access Object
  */
 @Repository
 @Qualifier("userDao1")
 public class UserRepositoryCustomImpl implements UserRepositoryCustom {
 
-    //
+//
     @PersistenceContext
     EntityManager em;//null  DI - Dipendency Injection
 
@@ -60,8 +61,7 @@ public class UserRepositoryCustomImpl implements UserRepositoryCustom {
 
         return query.getResultList();
     }
-
-    //JPQL
+//JPQL
 //    @Override
 //    public User findByEmailAndPassword(String email, String password) {
 //        Query q = em.createQuery("select u from User u where u.email= :e and u.password=:p", User.class);
@@ -83,7 +83,7 @@ public class UserRepositoryCustomImpl implements UserRepositoryCustom {
         CriteriaQuery<User> q1 = cb.createQuery(User.class);
         Root<User> postRoot = q1.from(User.class);
         CriteriaQuery<User> q2 = q1
-                .where(cb.equal(postRoot.get("email"), email), cb.equal(postRoot.get("password"), password));
+                .where(cb.equal(postRoot.get("email"), email),cb.equal(postRoot.get("password"), password));
         Query query = em.createQuery(q2);
 
 //        query.setParameter(1, email);
@@ -112,6 +112,7 @@ public class UserRepositoryCustomImpl implements UserRepositoryCustom {
 //
 //        return null;
 //    }
+
 
 
     //CriteriaBuilder
@@ -156,9 +157,9 @@ public class UserRepositoryCustomImpl implements UserRepositoryCustom {
 
 
     //Native SQL
-    @Override
+     @Override
     public User findByEmail(String email) {
-        Query query = em.createNativeQuery("select * from user where email = ?", User.class);
+        Query query= em.createNativeQuery("select * from user where email = ?", User.class);
         query.setParameter(1, email);
 //
         List<User> list = query.getResultList();
@@ -189,7 +190,7 @@ public class UserRepositoryCustomImpl implements UserRepositoryCustom {
         return u;
     }
 
-    private static BCryptPasswordEncoder crypt = new BCryptPasswordEncoder();
+    private static  BCryptPasswordEncoder crypt = new BCryptPasswordEncoder();
 
     @Override
     public boolean addUser(User u) {
@@ -198,7 +199,8 @@ public class UserRepositoryCustomImpl implements UserRepositoryCustom {
         return true;
     }
 
-    public void doSomeCustom() {
+    public void doSomeCustom(){
         System.out.println("I am custom");
     }
+
 }

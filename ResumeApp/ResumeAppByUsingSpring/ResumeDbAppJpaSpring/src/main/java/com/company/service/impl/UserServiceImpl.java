@@ -1,24 +1,19 @@
 package com.company.service.impl;
 
-//import at.favre.lib.crypto.bcrypt.BCrypt;
-
 import com.company.dao.impl.UserRepositoryCustom;
 import com.company.entity.User;
 import com.company.service.inter.UserServiceInter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
 import java.util.List;
 
 /**
  *
- * @author Lenovo
+ * @author sarkhanrasullu Data Access Object
  */
-
 @Service
 @Transactional
 public class UserServiceImpl implements UserServiceInter {
@@ -38,7 +33,7 @@ public class UserServiceImpl implements UserServiceInter {
     }
 
     //Native SQL
-    @Override
+     @Override
     public User findByEmail(String email) {
         return userDao.findByEmail(email);
     }
@@ -51,7 +46,7 @@ public class UserServiceImpl implements UserServiceInter {
 
     @Override
     public boolean removeUser(int id) {
-        return userDao.removeUser(id);
+      return userDao.removeUser(id);
     }
 
     @Override

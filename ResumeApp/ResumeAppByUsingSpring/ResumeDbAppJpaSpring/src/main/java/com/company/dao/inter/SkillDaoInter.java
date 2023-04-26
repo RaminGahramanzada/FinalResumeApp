@@ -6,15 +6,15 @@
 package com.company.dao.inter;
 
 import com.company.entity.Skill;
+
 import java.util.List;
 
 /**
  *
- * @author Lenovo
+ * @author Ramin
  */
 public interface SkillDaoInter {
 
-  
     List<Skill> getAll();
 
     public Skill getById(int id);

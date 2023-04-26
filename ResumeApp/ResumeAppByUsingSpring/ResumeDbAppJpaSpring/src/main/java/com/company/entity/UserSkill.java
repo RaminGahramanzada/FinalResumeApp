@@ -1,46 +1,42 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package com.company.entity;
 
+import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
 
 /**
  *
- * @author Lenovo
+ * @author Ramin
  */
 @Entity
 @Table(name = "user_skill")
+@XmlRootElement
 //@NamedQueries({
-//    @NamedQuery(name = "UserSkill.findAll", query = "SELECT u FROM UserSkill u"),
-//    @NamedQuery(name = "UserSkill.findById", query = "SELECT u FROM UserSkill u WHERE u.id = :id"),
-//    @NamedQuery(name = "UserSkill.findByPower", query = "SELECT u FROM UserSkill u WHERE u.power = :power")})
+//    @NamedQuery(name = "UserSkill.findAll", query = "SELECT u FROM UserSkill u")
+//    , @NamedQuery(name = "UserSkill.findById", query = "SELECT u FROM UserSkill u WHERE u.id = :id")
+//    , @NamedQuery(name = "UserSkill.findByPower", query = "SELECT u FROM UserSkill u WHERE u.power = :power")})
 public class UserSkill implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
     @Column(name = "power")
     private int power;
-    @JoinColumn(name = "skill_id", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Skill skill;
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private User user;
+    @JoinColumn(name = "skill_id", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Skill skill;
 
     public UserSkill() {
     }
@@ -70,14 +66,6 @@ public class UserSkill implements Serializable {
         this.power = power;
     }
 
-    public Skill getSkill() {
-        return skill;
-    }
-
-    public void setSkill(Skill skill) {
-        this.skill = skill;
-    }
-
     public User getUser() {
         return user;
     }
@@ -86,7 +74,15 @@ public class UserSkill implements Serializable {
         this.user = user;
     }
 
- 
+    public Skill getSkill() {
+        return skill;
+    }
+
+    public void setSkill(Skill skill) {
+        this.skill = skill;
+    }
+
+    
 
     @Override
     public int hashCode() {

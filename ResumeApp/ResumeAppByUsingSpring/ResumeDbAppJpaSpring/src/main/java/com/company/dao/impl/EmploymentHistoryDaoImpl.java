@@ -1,16 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.company.dao.impl;
 
-import com.company.entity.Skill;
-import com.company.entity.User;
-import com.company.entity.UserSkill;
-import com.company.dao.inter.AbstractDao;
+import com.company.dao.inter.AbstractDAO;
 import com.company.dao.inter.EmploymentHistoryDaoInter;
-import com.company.dao.inter.UserSkillDaoInter;
 import com.company.entity.EmploymentHistory;
+import com.company.entity.User;
+
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -20,11 +14,10 @@ import java.util.List;
 
 /**
  *
- * @author Lenovo
+ * @author Ramin Data Access Object
  */
-public class EmploymentHistoryDaoImpl extends AbstractDao implements EmploymentHistoryDaoInter {
-
-
+public class EmploymentHistoryDaoImpl extends AbstractDAO implements EmploymentHistoryDaoInter {
+ 
     private EmploymentHistory getEmploymentHistory(ResultSet rs) throws Exception {
             String header = rs.getString("header");
             String jobDescription = rs.getString("job_description");
@@ -54,6 +47,8 @@ public class EmploymentHistoryDaoImpl extends AbstractDao implements EmploymentH
         }
         return result;
     }
+    
+    
     
 
 }

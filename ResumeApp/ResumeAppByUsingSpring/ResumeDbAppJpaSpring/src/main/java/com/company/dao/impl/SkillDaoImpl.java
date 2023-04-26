@@ -5,25 +5,23 @@
  */
 package com.company.dao.impl;
 
-import com.company.dao.inter.AbstractDao;
+import com.company.dao.inter.AbstractDAO;
 import com.company.dao.inter.SkillDaoInter;
 import com.company.entity.Skill;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.EntityManager;
 
 /**
  *
- * @author Lenovo
+ * @author Ramin
  */
-public class SkillDaoImpl extends AbstractDao implements SkillDaoInter {
+public class SkillDaoImpl extends AbstractDAO implements SkillDaoInter {
 
-  
     @Override
     public List<Skill> getAll() {
         List<Skill> list = new ArrayList<>();
@@ -93,7 +91,6 @@ public class SkillDaoImpl extends AbstractDao implements SkillDaoInter {
         return b;
     }
 
-    @Override
     public boolean insertSkill(Skill skl) {
         Connection conn;
         boolean b = true;
@@ -157,4 +154,5 @@ public class SkillDaoImpl extends AbstractDao implements SkillDaoInter {
         }
         return list;
     }
+
 }

@@ -1,35 +1,33 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package com.company.dao.impl;
 
-import com.company.dao.inter.AbstractDao;
+import com.company.dao.inter.AbstractDAO;
 import com.company.dao.inter.CountryDaoInter;
 import com.company.entity.Country;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
- * @author Lenovo
+ * @author Ramin
  */
-public class CountryDaoImpl extends AbstractDao implements CountryDaoInter {
- public Country getCountry(ResultSet rs) throws SQLException {
+public class CountryDaoImpl extends AbstractDAO implements CountryDaoInter {
+
+    public Country getCountry(ResultSet rs) throws SQLException {
 
         int id = rs.getInt("Id");
         String name = rs.getString("name");
         String nationality = rs.getString("nationality");
 
-      //  Country contry = new Country(id, name, nationality);
-        //System.out.println(contry);
-       // return contry;
-       return null;
+        Country contry = new Country(id, name, nationality);
+        System.out.println(contry);
+        return contry;
 
     }
 
@@ -113,4 +111,5 @@ public class CountryDaoImpl extends AbstractDao implements CountryDaoInter {
             return false;
         }
     }
+
 }

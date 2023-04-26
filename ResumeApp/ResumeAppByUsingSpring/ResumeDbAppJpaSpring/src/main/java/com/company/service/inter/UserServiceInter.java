@@ -11,11 +11,11 @@ import java.util.List;
 
 /**
  *
- *
+ * @author sarkhanrasullu
  */
 public interface UserServiceInter {
 
-  public List<User> getAll(String name, String surname, Integer nationalityId);
+    public List<User> getAll(String name, String surname, Integer nationalityId);
 
     public User findByEmailAndPassword(String email, String password);
 
@@ -28,7 +28,6 @@ public interface UserServiceInter {
     public boolean removeUser(int id);
 
     public User findByEmail(String email);
-;
 
 
 
